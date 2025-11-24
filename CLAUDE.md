@@ -104,7 +104,7 @@ Claude automatically loads additional context when you work in these directories
 
 ## Project Overview
 
-**LEAN AI COACH** is an AI-powered coaching platform for lean methodology built with the Open SaaS template and Wasp framework. The MVP focuses on an A3 Problem Solving tool with an 8-section workflow and context-aware AI chat coaching.
+**Your SaaS Application** is built with the Open SaaS template and Wasp framework. This boilerplate provides a complete foundation for building modern SaaS applications with authentication, payments, and AI integration.
 
 **Tech Stack:**
 
@@ -112,7 +112,7 @@ Claude automatically loads additional context when you work in these directories
 - **Frontend**: React 18, TypeScript, Tailwind CSS, ShadCN UI v2, Radix UI
 - **Backend**: Node.js, Prisma ORM
 - **Database**: PostgreSQL
-- **AI**: OpenAI GPT-4 (for section-specific coaching)
+- **AI**: OpenAI GPT-4 (optional AI integration)
 
 ---
 
@@ -258,15 +258,15 @@ node --version  # Check your version
 
 ### Naming Rules
 
-| Element       | Convention       | Example                            |
-| ------------- | ---------------- | ---------------------------------- |
-| Components    | PascalCase       | `TaskList.tsx`, `A3Editor.tsx`     |
-| Utils/Helpers | camelCase        | `emailHelper.ts`, `formatters.ts`  |
-| Operations    | `operations.ts`  | `src/server/a3/operations.ts`      |
-| Variables     | camelCase        | `taskList`, `currentUser`          |
-| Functions     | camelCase + verb | `getTasks()`, `createA3()`         |
-| Booleans      | is/has/should    | `isAuthenticated`, `hasPermission` |
-| Constants     | UPPER_SNAKE_CASE | `MAX_FILE_SIZE`, `API_TIMEOUT_MS`  |
+| Element       | Convention       | Example                              |
+| ------------- | ---------------- | ------------------------------------ |
+| Components    | PascalCase       | `TaskList.tsx`, `DocumentEditor.tsx` |
+| Utils/Helpers | camelCase        | `emailHelper.ts`, `formatters.ts`    |
+| Operations    | `operations.ts`  | `src/server/documents/operations.ts` |
+| Variables     | camelCase        | `taskList`, `currentUser`            |
+| Functions     | camelCase + verb | `getTasks()`, `createDocument()`     |
+| Booleans      | is/has/should    | `isAuthenticated`, `hasPermission`   |
+| Constants     | UPPER_SNAKE_CASE | `MAX_FILE_SIZE`, `API_TIMEOUT_MS`    |
 
 ### Import Order (5 Groups with Blank Lines)
 
@@ -305,7 +305,7 @@ wasp clean                          # Fix weird errors (REQUIRES React 18 fix af
 ./scripts/multi-start.sh            # Start all worktrees parallel (power users)
 
 # Database Seeding
-./scripts/seed-visual-test.sh       # Seed demo user: demo@leancoach.nl / DemoPassword123!
+./scripts/seed-visual-test.sh       # Seed demo user: demo@example.com / DemoPassword123!
 
 # Port Mapping Reference (NEW)
 # develop  → 3000/3001 (DB 5432, Studio 5555)
@@ -377,15 +377,15 @@ After `wasp clean`, npm installs React 19 (breaks app with blank page).
 
 **Navigation:** 2-level top bar (NO sidebar)
 
-- Niveau 1: Logo, Tools (A3, 5S, Gemba, VSM), Language, User Menu
-- Niveau 2: Tool-specific actions
+- Level 1: Logo, Main Features, Language, User Menu
+- Level 2: Feature-specific actions
 
 **4-Tier Structure:**
 
-- Tier 0: Dashboard `/app` - Cross-tool overview
-- Tier 1: Tool Overview `/app/a3` - Grid/list
-- Tier 2: Detail View `/app/a3/:id` - Read-only
-- Tier 3: Editor `/app/a3/:id/edit` - Edit with AI chat
+- Tier 0: Dashboard `/app` - Cross-feature overview
+- Tier 1: Feature Overview `/app/documents` - Grid/list
+- Tier 2: Detail View `/app/documents/:id` - Read-only
+- Tier 3: Editor `/app/documents/:id/edit` - Edit interface
 
 **Multi-Tenancy:**
 
@@ -395,9 +395,9 @@ After `wasp clean`, npm installs React 19 (breaks app with blank page).
 
 **Code Organization:**
 
-- Product pages: `src/pages/{tool}/` (A3, 5S, etc.)
+- Product pages: `src/pages/{feature}/` (documents, tasks, etc.)
 - Template pages: `src/{feature}/` (auth, payment, admin)
-- Components: `src/components/{category}/` (ui, layout, a3)
+- Components: `src/components/{category}/` (ui, layout, documents)
 - Operations: `src/server/{feature}/operations.ts`
 
 **→ Permission helpers:** `.claude/templates/permission-helpers.ts`
@@ -453,7 +453,7 @@ After `wasp clean`, npm installs React 19 (breaks app with blank page).
 
 **Wasp-Specific**: Use `./scripts/safe-start.sh` | NEVER `npm start` | NEVER modify `.wasp/` | ALWAYS restart after schema changes
 
-**Architecture (LEAN AI COACH)**: 2-level top nav (NO sidebar) | Many-to-many User↔Department | Include VIEWER role
+**Architecture**: 2-level top nav (NO sidebar) | Many-to-many User↔Department | Include VIEWER role
 
 → **Complete guide**: [COMMON-PITFALLS.md](docs/COMMON-PITFALLS.md)
 → **Troubleshooting**: `troubleshooting-guide` skill
@@ -566,14 +566,16 @@ wasp clean && rm -rf node_modules .wasp && npm install && wasp db reset && wasp 
 
 ---
 
-## Implementation Roadmap (MVP) {#roadmap}
+## Implementation Roadmap (Example) {#roadmap}
 
-**12-week plan** (see `tasks/ARCHITECTURE_AND_IMPLEMENTATION_PLAN_V2.md`):
+**Example iterative development plan** (adapt to your needs):
 
-1. **Slice 1 (Week 1-3)**: Foundation + Multi-tenant + Dashboard
-2. **Slice 2 (Week 4-6)**: A3 Overview + Detail
-3. **Slice 3 (Week 7-9)**: A3 Editor + 8 Sections
-4. **Slice 4 (Week 10-12)**: AI Chat Integration (MVP launch)
+1. **Slice 1**: Foundation + Multi-tenant + Dashboard
+2. **Slice 2**: Feature Overview + Detail Pages
+3. **Slice 3**: Editor/Form Interfaces
+4. **Slice 4**: Advanced Features + Integration (MVP launch)
+
+**Note:** Remove or customize this section based on your project's specific roadmap.
 
 ---
 
