@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide defines how we organize documentation, manage tasks, and work with multiple git worktrees in your OpenSaaS application.
+This guide defines how we organize documentation, manage tasks, and work with multiple git worktrees in the LEAN AI COACH project.
 
 **Key Principles:**
 
@@ -17,29 +17,37 @@ This guide defines how we organize documentation, manage tasks, and work with mu
 ## Directory Structure
 
 ```
-opensaas-project/
+lean-ai-coach/
 ├── docs/                           # Stable, reviewed documentation
-│   ├── CODE-ORGANIZATION.md
+│   ├── ARCHITECTURE_AND_IMPLEMENTATION_PLAN_V2.md
 │   ├── TDD-WORKFLOW.md
 │   ├── TROUBLESHOOTING-GUIDE.md
 │   └── CI-CD-SETUP.md
 │
 ├── tasks/                          # All task-related work
-│   ├── templates/                  # Task templates
-│   │   ├── daily-task.md           # Daily task template
-│   │   ├── sprint-planning.md      # Sprint planning template
-│   │   └── retrospective.md        # Retrospective template
+│   ├── active/                     # Current work per worktree
+│   │   ├── toon/                   # TechLead's worktree tasks
+│   │   │   ├── current/            # Active sprint work
+│   │   │   │   ├── day-01.md       # Daily task breakdown
+│   │   │   │   ├── day-02.md
+│   │   │   │   └── notes.md        # Scratch notes
+│   │   │   └── backlog.md          # Worktree-specific backlog
+│   │   ├── backend/                # Backend dev's worktree tasks
+│   │   └── frontend/               # Frontend dev's worktree tasks
 │   │
-│   ├── sprints/                    # Sprint planning (create per sprint)
-│   │   └── sprint-01/
-│   │       ├── planning.md         # Sprint goals, user stories
-│   │       ├── retrospective.md    # What worked, what didn't
-│   │       └── day-01/             # Daily feature work
-│   │           └── README.md       # Feature description
+│   ├── sprints/                    # Sprint planning & retrospectives
+│   │   ├── sprint-01/
+│   │   │   ├── planning.md         # Sprint goals, user stories
+│   │   │   ├── retrospective.md    # What worked, what didn't
+│   │   │   └── burndown.md         # Progress tracking
+│   │   └── sprint-02/
 │   │
-│   ├── archive/                    # Completed work (monthly archive)
-│   │   └── YYYY-MM/                # Archive by month
-│   │       └── sprint-XX/
+│   ├── archive/                    # Completed work
+│   │   ├── 2025-01/                # January 2025 archive
+│   │   │   ├── toon/
+│   │   │   ├── backend/
+│   │   │   └── sprint-01/
+│   │   └── 2025-02/
 │   │
 │   └── templates/                  # Task templates
 │       ├── daily-task.md
@@ -311,13 +319,13 @@ Each developer works in separate git worktree:
 
 ```bash
 # TechLead
-git worktree add ../opensaas-project-tl feature/TL-techlead
+git worktree add ../lean-ai-coach-tl feature/TL-techlead
 
 # Backend Developer
-git worktree add ../opensaas-project-be feature/BE-backend
+git worktree add ../lean-ai-coach-be feature/BE-backend
 
 # Frontend Developer
-git worktree add ../opensaas-project-fe feature/FE-frontend
+git worktree add ../lean-ai-coach-fe feature/FE-frontend
 ```
 
 **Each worktree gets own task directory:**
@@ -418,10 +426,10 @@ git worktree add ../opensaas-project-fe feature/FE-frontend
 
 **Example flow:**
 
-1. **Day 1:** Brainstorm feature layout → tasks/active/toon/current/notes.md
-2. **Day 2-3:** Structure proposal → tasks/active/toon/current/feature-proposal.md
+1. **Day 1:** Brainstorm A3 grid layout → tasks/active/toon/current/notes.md
+2. **Day 2-3:** Structure proposal → tasks/active/toon/current/a3-grid-proposal.md
 3. **Day 4:** Review with team, refine
-4. **Day 5:** Approved → Move to docs/FEATURE-LAYOUT.md
+4. **Day 5:** Approved → Move to docs/A3-GRID-LAYOUT.md
 5. **End of sprint:** Archive old notes → tasks/archive/2025-01/toon/
 
 ---

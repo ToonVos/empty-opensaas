@@ -12,11 +12,11 @@
 
 | Worktree                         | Frontend | Backend | Database | Studio |
 | -------------------------------- | -------- | ------- | -------- | ------ |
-| **develop** (opensaas-main)      | 3000     | 3001    | 5432     | 5555   |
-| **Dev1** (opensaas-dev1)         | 3100     | 3101    | 5433     | 5556   |
-| **Dev2** (opensaas-dev2)         | 3200     | 3201    | 5434     | 5557   |
-| **Dev3** (opensaas-dev3)         | 3300     | 3301    | 5435     | 5558   |
-| **TechLead** (opensaas-techlead) | 3400     | 3401    | 5436     | 5559   |
+| **main** (opensaas-main)         | 3000     | 3001    | 5432     | 5555   |
+| **dev1** (opensaas-dev1)         | 3100     | 3101    | 5433     | 5556   |
+| **dev2** (opensaas-dev2)         | 3200     | 3201    | 5434     | 5557   |
+| **dev3** (opensaas-dev3)         | 3300     | 3301    | 5435     | 5558   |
+| **techlead** (opensaas-techlead) | 3400     | 3401    | 5436     | 5559   |
 
 **Key Features:**
 
@@ -79,12 +79,12 @@ echo "Starting on port ${FRONTEND_PORT}"
 
 1. Get git worktree root directory name
 2. Match against known patterns:
-   - `opensaas-main` → develop (3000/3001/5432/5555)
-   - `opensaas-dev1` → Dev1 (3100/3101/5433/5556)
-   - `opensaas-dev2` → Dev2 (3200/3201/5434/5557)
-   - `opensaas-dev3` → Dev3 (3300/3301/5435/5558)
-   - `opensaas-techlead` → TechLead (3400/3401/5436/5559)
-   - `opensaas-cto` → CTO (shares develop: 3000/3001/5432/5555)
+   - `opensaas-main` → main (3000/3001/5432/5555)
+   - `opensaas-dev1` → dev1 (3100/3101/5433/5556)
+   - `opensaas-dev2` → dev2 (3200/3201/5434/5557)
+   - `opensaas-dev3` → dev3 (3300/3301/5435/5558)
+   - `opensaas-techlead` → techlead (3400/3401/5436/5559)
+   - `opensaas-cto` → cto (shares main: 3000/3001/5432/5555)
 3. Export all variables
 
 ---
