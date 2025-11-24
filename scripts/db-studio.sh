@@ -103,7 +103,7 @@ start_all() {
   echo -e "${BLUE}╚════════════════════════════════════════════════════════════════╝${NC}"
   echo ""
 
-  local worktrees=("lean-ai-coach" "lean-ai-coach-Dev1" "lean-ai-coach-Dev2" "lean-ai-coach-Dev3" "lean-ai-coach-tl")
+  local worktrees=("opensaas-main" "opensaas-dev1" "opensaas-dev2" "opensaas-dev3")
 
   for wt in "${worktrees[@]}"; do
     start_studio "$wt" true
@@ -136,15 +136,14 @@ show_help() {
   echo "  $0 --all              - Start all 4 Studios in background"
   echo ""
   echo "Worktree names:"
-  echo "  lean-ai-coach       → Studio on port 5555 (develop)"
-  echo "  lean-ai-coach-Dev1  → Studio on port 5556 (Dev1)"
-  echo "  lean-ai-coach-Dev2  → Studio on port 5557 (Dev2)"
-  echo "  lean-ai-coach-Dev3  → Studio on port 5558 (Dev3)"
-  echo "  lean-ai-coach-tl    → Studio on port 5559 (TechLead)"
+  echo "  opensaas-main  → Studio on port 5555 (main)"
+  echo "  opensaas-dev1  → Studio on port 5556 (dev1)"
+  echo "  opensaas-dev2  → Studio on port 5557 (dev2)"
+  echo "  opensaas-dev3  → Studio on port 5558 (dev3)"
   echo ""
   echo "Examples:"
   echo "  $0                          # Start Studio for current worktree"
-  echo "  $0 lean-ai-coach-Dev1       # Start Studio for Dev1"
+  echo "  $0 opensaas-dev1            # Start Studio for dev1"
   echo "  $0 --all                    # Start all Studios in background"
   echo ""
 }

@@ -1,6 +1,6 @@
 # Scripts Directory
 
-Development helper scripts for the Lean AI Coach project (Wasp 0.18 framework).
+Development helper scripts for the OpenSaaS Boilerplate project (Wasp 0.18 framework).
 
 ## Multi-Worktree Isolation
 
@@ -85,7 +85,7 @@ Complete isolation per worktree! Automatically configures ports, database, and e
 ### Common Issues
 
 **"Wrong ports detected"**
-→ Check your worktree name matches expected pattern (lean-ai-coach-Dev1, etc.)
+→ Check your worktree name matches expected pattern (opensaas-dev1, etc.)
 
 **"Database not running"**
 → Script auto-starts it - just wait for database ready message.
@@ -113,7 +113,7 @@ Manage Docker PostgreSQL containers for each worktree. Each worktree gets its ow
 ./scripts/db-manager.sh start
 
 # Start database for specific worktree
-./scripts/db-manager.sh start lean-ai-coach-Dev1
+./scripts/db-manager.sh start opensaas-dev1
 
 # Stop database
 ./scripts/db-manager.sh stop
@@ -170,7 +170,7 @@ Launch Prisma Studio with correct port and database for your worktree. Allows mu
 ./scripts/db-studio.sh
 
 # Start Studio for specific worktree
-./scripts/db-studio.sh lean-ai-coach-Dev1
+./scripts/db-studio.sh opensaas-dev1
 
 # Start ALL Studios in background (parallel)
 ./scripts/db-studio.sh --all
@@ -346,7 +346,7 @@ Quickly populate the database with a working demo user + realistic A3 document a
 
 ### What It Creates
 
-- ✅ **User**: `demo@leancoach.nl` with working password
+- ✅ **User**: `demo@example.com` with working password
 - ✅ **Organization**: "Demo Corporation" (subdomain: demo)
 - ✅ **Department**: "Production"
 - ✅ **A3 Document**: "Reduce Production Downtime" with 8 sections
@@ -362,7 +362,7 @@ Quickly populate the database with a working demo user + realistic A3 document a
 
 After seeding, you can login at http://localhost:3000/login with:
 
-- **Email**: `demo@leancoach.nl`
+- **Email**: `demo@example.com`
 - **Password**: `DemoPassword123!`
 
 ### When To Use
@@ -385,7 +385,7 @@ After seeding, you can login at http://localhost:3000/login with:
 🌱 Seeding demo user with A3 data...
 ✅ Demo user seeded successfully!
 
-📧 Email: demo@leancoach.nl
+📧 Email: demo@example.com
 🔑 Password: DemoPassword123!
 📝 A3 ID: 36147b94-0799-4459-a7b5-7400a98228e1
 🔗 URL: http://localhost:3000/app/a3/36147b94-0799-4459-a7b5-7400a98228e1
@@ -452,7 +452,7 @@ Copies `.mcp.json` to Claude's global config location to enable Playwright tools
 **Solution**: Check your worktree name matches expected pattern:
 
 ```bash
-basename $(pwd)  # Should be: lean-ai-coach-Dev1, lean-ai-coach-Dev2, etc.
+basename $(pwd)  # Should be: opensaas-dev1, opensaas-dev2, etc.
 
 # Check what config detects
 source scripts/worktree-config.sh
@@ -585,7 +585,7 @@ wasp db reset
 
 # Login and test
 open http://localhost:3000/login
-# Email: demo@leancoach.nl
+# Email: demo@example.com
 # Password: DemoPassword123!
 ```
 
@@ -595,12 +595,12 @@ open http://localhost:3000/login
 
 ```bash
 # Dev1 Agent (separate terminal)
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev1
+cd ~/Projects/OpenSAAS/opensaas-dev1
 ./scripts/safe-start.sh
 # → Runs on ports 3100/3101, database wasp-dev-db-dev1
 
 # Dev2 Agent (separate terminal) - SIMULTANEOUSLY!
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev2
+cd ~/Projects/OpenSAAS/opensaas-dev2
 ./scripts/safe-start.sh
 # → Runs on ports 3200/3201, database wasp-dev-db-dev2
 
@@ -638,7 +638,7 @@ Each worktree gets:
 
 - **Own ports**: Frontend, Backend, Database, Prisma Studio
 - **Own database**: Separate Docker container with isolated data
-- **Auto-detection**: Based on directory name (lean-ai-coach-Dev1, etc.)
+- **Auto-detection**: Based on directory name (opensaas-dev1, etc.)
 - **Zero coordination**: Developers work independently without conflicts
 
 **How it works:**

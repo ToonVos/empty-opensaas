@@ -302,10 +302,9 @@ wasp clean                          # Fix weird errors (REQUIRES React 18 fix af
 ./scripts/db-manager.sh stopall     # Stop all databases (all worktrees)
 ./scripts/db-studio.sh              # Prisma Studio for current worktree (auto port)
 ./scripts/db-studio.sh --all        # Start all 4 Studios simultaneously
-./scripts/multi-start.sh            # Start all worktrees parallel (power users)
 
 # Database Seeding
-./scripts/seed-visual-test.sh       # Seed demo user: demo@example.com / DemoPassword123!
+./scripts/seed-demo-user.sh         # Seed demo user: demo@example.com / DemoPassword123!
 
 # Port Mapping Reference (NEW)
 # develop  → 3000/3001 (DB 5432, Studio 5555)

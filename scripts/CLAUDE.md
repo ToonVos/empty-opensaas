@@ -10,13 +10,13 @@
 
 ### Port Mapping
 
-| Worktree                        | Frontend | Backend | Database | Studio |
-| ------------------------------- | -------- | ------- | -------- | ------ |
-| **develop** (lean-ai-coach)     | 3000     | 3001    | 5432     | 5555   |
-| **Dev1** (lean-ai-coach-Dev1)   | 3100     | 3101    | 5433     | 5556   |
-| **Dev2** (lean-ai-coach-Dev2)   | 3200     | 3201    | 5434     | 5557   |
-| **Dev3** (lean-ai-coach-Dev3)   | 3300     | 3301    | 5435     | 5558   |
-| **TechLead** (lean-ai-coach-tl) | 3400     | 3401    | 5436     | 5559   |
+| Worktree                         | Frontend | Backend | Database | Studio |
+| -------------------------------- | -------- | ------- | -------- | ------ |
+| **develop** (opensaas-main)      | 3000     | 3001    | 5432     | 5555   |
+| **Dev1** (opensaas-dev1)         | 3100     | 3101    | 5433     | 5556   |
+| **Dev2** (opensaas-dev2)         | 3200     | 3201    | 5434     | 5557   |
+| **Dev3** (opensaas-dev3)         | 3300     | 3301    | 5435     | 5558   |
+| **TechLead** (opensaas-techlead) | 3400     | 3401    | 5436     | 5559   |
 
 **Key Features:**
 
@@ -35,10 +35,10 @@
 | `safe-start.sh`        | **ALWAYS** for starting servers          | Auto-detects worktree, dynamic ports |
 | `db-manager.sh`        | Database lifecycle (start/stop/clean)    | Per-worktree database management     |
 | `db-studio.sh`         | Launch Prisma Studio                     | Worktree-specific port               |
-| `multi-start.sh`       | Start all worktrees parallel             | Power users, iTerm automation        |
+| `seed-demo-user.sh`    | Start all worktrees parallel             | Seeds demo@example.com user          |
 | `test-watch.sh`        | TDD RED phase watch mode                 | Worktree-aware port checks           |
 | `fix-react-version.sh` | After `wasp clean` (auto via safe-start) | Fixes React 19 → 18                  |
-| `seed-visual-test.sh`  | After db reset, for visual testing       | Creates demo@leancoach.nl            |
+| `seed-demo-user.sh`    | Seed basic demo user for testing         | Creates demo@example.com             |
 | `setup-mcp.sh`         | First-time setup, MCP config changes     | Requires Claude Code restart         |
 
 ---
@@ -79,12 +79,12 @@ echo "Starting on port ${FRONTEND_PORT}"
 
 1. Get git worktree root directory name
 2. Match against known patterns:
-   - `lean-ai-coach` → develop (3000/3001/5432/5555)
-   - `lean-ai-coach-Dev1` → Dev1 (3100/3101/5433/5556)
-   - `lean-ai-coach-Dev2` → Dev2 (3200/3201/5434/5557)
-   - `lean-ai-coach-Dev3` → Dev3 (3300/3301/5435/5558)
-   - `lean-ai-coach-tl` → TechLead (3400/3401/5436/5559)
-   - `lean-ai-coach-cto` → CTO (shares develop: 3000/3001/5432/5555)
+   - `opensaas-main` → develop (3000/3001/5432/5555)
+   - `opensaas-dev1` → Dev1 (3100/3101/5433/5556)
+   - `opensaas-dev2` → Dev2 (3200/3201/5434/5557)
+   - `opensaas-dev3` → Dev3 (3300/3301/5435/5558)
+   - `opensaas-techlead` → TechLead (3400/3401/5436/5559)
+   - `opensaas-cto` → CTO (shares develop: 3000/3001/5432/5555)
 3. Export all variables
 
 ---
@@ -102,7 +102,7 @@ echo "Starting on port ${FRONTEND_PORT}"
 ./scripts/db-manager.sh start
 
 # Start database for specific worktree
-./scripts/db-manager.sh start lean-ai-coach-Dev1
+./scripts/db-manager.sh start opensaas-dev1
 
 # Stop database
 ./scripts/db-manager.sh stop
@@ -159,7 +159,7 @@ TechLead        wasp-dev-db-tl            5436       RUNNING
 **New worktree first use:**
 
 ```bash
-cd /path/to/lean-ai-coach-Dev1
+cd /path/to/opensaas-dev1
 ./scripts/db-manager.sh start  # Creates new database
 ```
 
@@ -190,7 +190,7 @@ cd /path/to/lean-ai-coach-Dev1
 ./scripts/db-studio.sh
 
 # Start Studio for specific worktree
-./scripts/db-studio.sh lean-ai-coach-Dev1
+./scripts/db-studio.sh opensaas-dev1
 
 # Start ALL Studios in background (parallel)
 ./scripts/db-studio.sh --all
@@ -228,7 +228,7 @@ kill $(lsof -ti:5556)  # Kill Dev1 Studio
 
 ---
 
-## multi-start.sh - Parallel Launcher (NEW)
+## seed-demo-user.sh - Parallel Launcher (NEW)
 
 ### Purpose
 
@@ -238,13 +238,13 @@ kill $(lsof -ti:5556)  # Kill Dev1 Studio
 
 ```bash
 # Start all 4 worktrees (develop, Dev1, Dev2, Dev3)
-./scripts/multi-start.sh
+./scripts/seed-demo-user.sh
 
 # Start all + all Prisma Studios
-./scripts/multi-start.sh --with-studio
+./scripts/seed-demo-user.sh --with-studio
 
 # Start only specific worktrees
-./scripts/multi-start.sh dev1 dev2
+./scripts/seed-demo-user.sh dev1 dev2
 ```
 
 ### What It Does
@@ -269,7 +269,7 @@ kill $(lsof -ti:5556)  # Kill Dev1 Studio
 
 ```bash
 # Morning startup - start all worktrees at once
-./scripts/multi-start.sh
+./scripts/seed-demo-user.sh
 
 # View URLs (all running parallel)
 develop  → http://localhost:3000 & :3001
@@ -283,7 +283,7 @@ TechLead → http://localhost:3400 & :3401
 
 ```bash
 # Only Dev1 and Dev2 today
-./scripts/multi-start.sh dev1 dev2
+./scripts/seed-demo-user.sh dev1 dev2
 ```
 
 ### Terminal Support
@@ -480,7 +480,7 @@ Wasp generates `.wasp/out/web-app` during build. This directory contains the Rea
 
 ---
 
-## seed-visual-test.sh - Demo User Seeding
+## seed-demo-user.sh - Demo User Seeding
 
 ### Purpose
 
@@ -504,8 +504,8 @@ Wasp generates `.wasp/out/web-app` during build. This directory contains the Rea
 
 // User (with working password!)
 {
-  email: 'demo@leancoach.nl',
-  username: 'demo@leancoach.nl',
+  email: 'demo@example.com',
+  username: 'demo@example.com',
   organizationId: org.id,
   orgRole: OrgRole.ADMIN,
   // Nested Auth + AuthIdentity
@@ -514,7 +514,7 @@ Wasp generates `.wasp/out/web-app` during build. This directory contains the Rea
       identities: {
         create: {
           providerName: 'email',
-          providerUserId: 'demo@leancoach.nl',
+          providerUserId: 'demo@example.com',
           providerData: await sanitizeAndSerializeProviderData<'email'>({
             hashedPassword: 'DemoPassword123!',
             isEmailVerified: true,
@@ -565,7 +565,7 @@ await prisma.user.create({
         identities: {
           create: {
             providerName: "email",
-            providerUserId: "demo@leancoach.nl",
+            providerUserId: "demo@example.com",
             providerData, // Serialized auth data
           },
         },
@@ -584,7 +584,7 @@ const existingAuth = await prisma.auth.findFirst({
     identities: {
       some: {
         providerName: 'email',
-        providerUserId: 'demo@leancoach.nl'
+        providerUserId: 'demo@example.com'
       }
     }
   },
@@ -647,7 +647,7 @@ Cannot seed users with passwords via normal Prisma because:
 ### Login Credentials
 
 ```
-Email: demo@leancoach.nl
+Email: demo@example.com
 Password: DemoPassword123!
 URL: http://localhost:3000/login
 ```
@@ -799,10 +799,10 @@ docker ps
 
 ```bash
 # Check migrations in each worktree
-cd lean-ai-coach-Dev1
+cd opensaas-dev1
 ls app/migrations/
 
-cd lean-ai-coach-Dev2
+cd opensaas-dev2
 ls app/migrations/
 ```
 
@@ -850,7 +850,7 @@ Or run: `./scripts/db-studio.sh` (auto-detects worktree)
 ./scripts/db-manager.sh status  # Check current state
 
 # Start each worktree's database
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev1
+cd ~/Projects/OpenSAAS/opensaas-dev1
 ./scripts/db-manager.sh start
 
 # Or let safe-start.sh handle it
@@ -904,15 +904,15 @@ cat app/.wasp/out/web-app/node_modules/react/package.json | grep version
 
 ### Invalid Credentials After Seeding
 
-**Symptom**: Can't login with demo@leancoach.nl / DemoPassword123!
+**Symptom**: Can't login with demo@example.com / DemoPassword123!
 
 **Diagnosis**: Check if email auth fields are correct
 
 **Fix**: This is now fixed in latest seed script - delete old user and re-seed:
 
 ```bash
-# In Prisma Studio: Delete user demo@leancoach.nl
-./scripts/seed-visual-test.sh
+# In Prisma Studio: Delete user demo@example.com
+./scripts/seed-demo-user.sh
 ```
 
 ### Database Not Running
@@ -951,7 +951,7 @@ wasp start db
 ./scripts/safe-start.sh --clean
 
 # 4. Seed test data
-./scripts/seed-visual-test.sh
+./scripts/seed-demo-user.sh
 ```
 
 ### Multi-Worktree Parallel Work (UPDATED)
@@ -959,13 +959,13 @@ wasp start db
 **NOW: Complete isolation per worktree!**
 
 ```bash
-# Dev1 Agent (worktree: lean-ai-coach-Dev1)
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev1
+# Dev1 Agent (worktree: opensaas-dev1)
+cd ~/Projects/OpenSAAS/opensaas-dev1
 ./scripts/safe-start.sh
 # → Starts on ports 3100/3101, database wasp-dev-db-dev1
 
-# Dev2 Agent (worktree: lean-ai-coach-Dev2) - SIMULTANEOUSLY!
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev2
+# Dev2 Agent (worktree: opensaas-dev2) - SIMULTANEOUSLY!
+cd ~/Projects/OpenSAAS/opensaas-dev2
 ./scripts/safe-start.sh
 # → Starts on ports 3200/3201, database wasp-dev-db-dev2
 
@@ -978,7 +978,7 @@ cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev2
 
 ```bash
 # Start all 4 worktrees at once
-./scripts/multi-start.sh --with-studio
+./scripts/seed-demo-user.sh --with-studio
 ```
 
 ### When To Use Each Script
@@ -996,7 +996,7 @@ cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev2
 - ❌ Rarely needed (auto via safe-start --clean)
 - ✅ Only if blank page after wasp clean
 
-**`seed-visual-test.sh`**:
+**`seed-demo-user.sh`**:
 
 - ✅ After wasp db reset
 - ✅ Need demo data for testing

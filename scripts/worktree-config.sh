@@ -24,64 +24,38 @@ get_worktree_config() {
   local worktree_name="$1"
 
   case "$worktree_name" in
-    "lean-ai-coach")
-      # Main/develop worktree - default ports
-      export WORKTREE_NAME="develop"
+    "opensaas-main" | "Empty OpenSAAS")
+      # Main worktree - default ports
+      export WORKTREE_NAME="main"
       export FRONTEND_PORT=3000
       export BACKEND_PORT=3001
       export DB_PORT=5432
       export STUDIO_PORT=5555
-      export DB_NAME="wasp-dev-db-develop"
+      export DB_NAME="opensaas-dev-main"
       ;;
-    "lean-ai-coach-Dev1")
-      export WORKTREE_NAME="Dev1"
+    "opensaas-dev1")
+      export WORKTREE_NAME="dev1"
       export FRONTEND_PORT=3100
       export BACKEND_PORT=3101
       export DB_PORT=5433
       export STUDIO_PORT=5556
-      export DB_NAME="wasp-dev-db-dev1"
+      export DB_NAME="opensaas-dev-dev1"
       ;;
-    "lean-ai-coach-Dev2")
-      export WORKTREE_NAME="Dev2"
+    "opensaas-dev2")
+      export WORKTREE_NAME="dev2"
       export FRONTEND_PORT=3200
       export BACKEND_PORT=3201
       export DB_PORT=5434
       export STUDIO_PORT=5557
-      export DB_NAME="wasp-dev-db-dev2"
+      export DB_NAME="opensaas-dev-dev2"
       ;;
-    "lean-ai-coach-Dev3")
-      export WORKTREE_NAME="Dev3"
+    "opensaas-dev3")
+      export WORKTREE_NAME="dev3"
       export FRONTEND_PORT=3300
       export BACKEND_PORT=3301
       export DB_PORT=5435
       export STUDIO_PORT=5558
-      export DB_NAME="wasp-dev-db-dev3"
-      ;;
-    "lean-ai-coach-tl")
-      # TechLead worktree - own ports and database
-      export WORKTREE_NAME="TechLead"
-      export FRONTEND_PORT=3400
-      export BACKEND_PORT=3401
-      export DB_PORT=5436
-      export STUDIO_PORT=5559
-      export DB_NAME="wasp-dev-db-tl"
-      ;;
-    "lean-ai-coach-cto")
-      # CTO worktree - mapped to develop (shares main database)
-      export WORKTREE_NAME="CTO"
-      export FRONTEND_PORT=3000
-      export BACKEND_PORT=3001
-      export DB_PORT=5432
-      export STUDIO_PORT=5555
-      export DB_NAME="wasp-dev-db-main"
-      ;;
-    "lean-ai-coach-AnGr1")
-      export WORKTREE_NAME="AnGr1"
-      export FRONTEND_PORT=3500
-      export BACKEND_PORT=3501
-      export DB_PORT=5437
-      export STUDIO_PORT=5560
-      export DB_NAME="wasp-dev-db-angr1"
+      export DB_NAME="opensaas-dev-dev3"
       ;;
     *)
       # Unknown worktree - default to main ports
@@ -90,7 +64,7 @@ get_worktree_config() {
       export BACKEND_PORT=3001
       export DB_PORT=5432
       export STUDIO_PORT=5555
-      export DB_NAME="wasp-dev-db-main"
+      export DB_NAME="opensaas-dev-main"
       ;;
   esac
 

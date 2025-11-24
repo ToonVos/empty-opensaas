@@ -129,8 +129,8 @@ if [ "$SKIP_SEED" = false ]; then
     echo -e "${GREEN}  ✅ Database seeded successfully${NC}"
 
     # Extract and show key info from seed output
-    if grep -q "demo@leancoach.nl" /tmp/seed-output.log; then
-      echo -e "${GREEN}  📧 Demo user: demo@leancoach.nl / DemoPassword123!${NC}"
+    if grep -q "demo@example.com" /tmp/seed-output.log; then
+      echo -e "${GREEN}  📧 Demo user: demo@example.com / DemoPassword123!${NC}"
     fi
 
     if grep -q "8 A3 Documents" /tmp/seed-output.log; then
@@ -200,7 +200,7 @@ else
   echo -e "  2. Run with --headed flag to see browser: ${BLUE}./scripts/run-e2e-tests.sh --headed${NC}"
   echo -e "  3. Run with --debug flag for step-by-step: ${BLUE}./scripts/run-e2e-tests.sh --debug${NC}"
   echo -e "  4. Check if seed data exists: ${BLUE}${CLIENT_URL}/login${NC}"
-  echo -e "     Login: demo@leancoach.nl / DemoPassword123!"
+  echo -e "     Login: demo@example.com / DemoPassword123!"
 fi
 
 echo ""
@@ -215,7 +215,7 @@ echo ""
 echo -e "${BLUE}════════════════════════════════════════${NC}"
 echo -e "${BLUE}  Manual Testing:                        ${NC}"
 echo -e "${BLUE}════════════════════════════════════════${NC}"
-echo -e "  📧 Login: ${GREEN}demo@leancoach.nl${NC}"
+echo -e "  📧 Login: ${GREEN}demo@example.com${NC}"
 echo -e "  🔑 Pass:  ${GREEN}DemoPassword123!${NC}"
 echo -e "  🌐 URL:   ${GREEN}${CLIENT_URL}/login${NC}"
 echo ""

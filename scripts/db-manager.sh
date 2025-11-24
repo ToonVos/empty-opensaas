@@ -132,8 +132,8 @@ show_status() {
   echo ""
 
   # Define all worktrees
-  local worktrees=("lean-ai-coach" "lean-ai-coach-Dev1" "lean-ai-coach-Dev2" "lean-ai-coach-Dev3" "lean-ai-coach-tl" "lean-ai-coach-AnGr1")
-  local names=("develop" "Dev1" "Dev2" "Dev3" "TechLead" "AnGr1")
+  local worktrees=("opensaas-main" "opensaas-dev1" "opensaas-dev2" "opensaas-dev3")
+  local names=("main" "dev1" "dev2" "dev3")
 
   printf "%-15s %-25s %-10s %-10s\n" "WORKTREE" "CONTAINER" "PORT" "STATUS"
   printf "%-15s %-25s %-10s %-10s\n" "--------" "---------" "----" "------"
@@ -162,7 +162,7 @@ show_status() {
 stopall_databases() {
   echo -e "${BLUE}Stopping all databases...${NC}"
 
-  local worktrees=("lean-ai-coach" "lean-ai-coach-Dev1" "lean-ai-coach-Dev2" "lean-ai-coach-Dev3" "lean-ai-coach-tl" "lean-ai-coach-AnGr1")
+  local worktrees=("opensaas-main" "opensaas-dev1" "opensaas-dev2" "opensaas-dev3")
 
   for wt in "${worktrees[@]}"; do
     get_worktree_config "$wt"
@@ -203,12 +203,10 @@ case "${1:-}" in
     echo "  $0 stopall            - Stop all databases"
     echo ""
     echo "Worktree names:"
-    echo "  lean-ai-coach       (develop)"
-    echo "  lean-ai-coach-Dev1  (Dev1)"
-    echo "  lean-ai-coach-Dev2  (Dev2)"
-    echo "  lean-ai-coach-Dev3  (Dev3)"
-    echo "  lean-ai-coach-tl    (TechLead)"
-    echo "  lean-ai-coach-AnGr1 (AnGr1)"
+    echo "  opensaas-main  (main)"
+    echo "  opensaas-dev1  (dev1)"
+    echo "  opensaas-dev2  (dev2)"
+    echo "  opensaas-dev3  (dev3)"
     echo ""
     exit 1
     ;;
