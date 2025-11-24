@@ -1,0 +1,34 @@
+{
+  "name": "wasp-opensaas-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wasp OpenSaaS Boilerplate with TDD workflow and multi-worktree support",
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "cd app && npx eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "cd app && npx eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "cd app && npx prettier --write .",
+    "format:check": "cd app && npx prettier --check .",
+    "type-check": "cd app && npx tsc -p tsconfig.json --noEmit",
+    "test": "cd app && wasp test client run",
+    "test:watch": "./scripts/test-watch.sh",
+    "e2e": "./scripts/run-e2e-tests.sh",
+    "clean:temp": "./scripts/cleanup-temp.sh",
+    "clean:temp:old": "npm run clean:temp -- --older-than 7",
+    "list:temp": "find .tmp -type f ! -name 'README.md' ! -name 'CLAUDE.md' ! -name '.gitkeep' | sort"
+  },
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "3.1.1"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  }
+}
