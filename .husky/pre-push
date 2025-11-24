@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+bash .husky/_pre-push.sh
+

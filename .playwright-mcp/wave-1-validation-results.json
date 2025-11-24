@@ -1,0 +1,424 @@
+{
+  "waveId": 1,
+  "iteration": 1,
+  "timeMinutes": 42,
+  "cost": 0.025,
+  "timestamp": "2025-10-17T00:00:00.000Z",
+  "results": [
+    {
+      "name": "Button",
+      "category": "atoms",
+      "visualMatch": 85,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "padding",
+          "expected": "24px",
+          "actual": "16px (px-4)",
+          "diff": "-8px horizontal",
+          "severity": "major"
+        },
+        {
+          "property": "fontWeight",
+          "expected": "500",
+          "actual": "600 (font-semibold)",
+          "diff": "+100",
+          "severity": "minor"
+        }
+      ],
+      "measurements": {
+        "height": { "expected": "41px", "actual": "41px", "match": true },
+        "padding": {
+          "expected": "12px 24px",
+          "actual": "16px",
+          "match": false
+        },
+        "backgroundColor": {
+          "expected": "rgb(37, 99, 235)",
+          "actual": "rgb(37, 99, 235)",
+          "match": true
+        },
+        "fontSize": { "expected": "15px", "actual": "15px", "match": true },
+        "borderRadius": { "expected": "8px", "actual": "8px", "match": true }
+      },
+      "files": ["validation-report.md", "button-prototype-reference.png"]
+    },
+    {
+      "name": "Input",
+      "category": "atoms",
+      "visualMatch": 95,
+      "status": "pass",
+      "issues": [],
+      "measurements": {
+        "height": { "expected": "43px", "actual": "~43px", "match": true },
+        "padding": {
+          "expected": "12px 16px 12px 44px",
+          "actual": "py-3 px-4 + pl-[44px]",
+          "match": true
+        },
+        "backgroundColor": {
+          "expected": "rgb(255, 255, 255)",
+          "actual": "rgb(255, 255, 255)",
+          "match": true
+        },
+        "fontSize": { "expected": "15px", "actual": "15px", "match": true },
+        "borderRadius": { "expected": "8px", "actual": "8px", "match": true }
+      },
+      "files": ["validation-report.md", "input-prototype-reference.png"]
+    },
+    {
+      "name": "Card",
+      "category": "atoms",
+      "visualMatch": 90,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "borderRadius",
+          "expected": "8px",
+          "actual": "12px (rounded-xl)",
+          "diff": "+4px",
+          "severity": "minor"
+        },
+        {
+          "property": "boxShadow",
+          "expected": "none",
+          "actual": "0_10px_15px_-3px_rgba(0,0,0,0.05)",
+          "diff": "Shadow added",
+          "severity": "minor"
+        }
+      ],
+      "measurements": {
+        "backgroundColor": {
+          "expected": "rgb(255, 255, 255)",
+          "actual": "rgb(255, 255, 255)",
+          "match": true
+        },
+        "borderRadius": { "expected": "8px", "actual": "12px", "match": false },
+        "border": {
+          "expected": "1px solid rgb(226, 232, 240)",
+          "actual": "1px solid #e2e8f0",
+          "match": true
+        }
+      },
+      "files": ["validation-report.md", "card-prototype-reference.png"]
+    },
+    {
+      "name": "LoadingSpinner",
+      "category": "atoms",
+      "visualMatch": 98,
+      "status": "pass",
+      "issues": [
+        {
+          "property": "borderTopColor",
+          "expected": "white",
+          "actual": "border-r-transparent",
+          "diff": "Different technique, same visual effect",
+          "severity": "cosmetic"
+        }
+      ],
+      "measurements": {
+        "width": { "expected": "16px", "actual": "16px", "match": true },
+        "height": { "expected": "16px", "actual": "16px", "match": true },
+        "border": {
+          "expected": "2px solid",
+          "actual": "2px solid",
+          "match": true
+        },
+        "borderRadius": { "expected": "50%", "actual": "50%", "match": true }
+      },
+      "files": ["validation-report.md"]
+    },
+    {
+      "name": "FormField",
+      "category": "molecules",
+      "visualMatch": 92,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "gap",
+          "expected": "8px",
+          "actual": "6px (gap-[6px])",
+          "diff": "-2px",
+          "severity": "minor"
+        }
+      ],
+      "measurements": {
+        "display": { "expected": "flex", "actual": "flex", "match": true },
+        "flexDirection": {
+          "expected": "column",
+          "actual": "column",
+          "match": true
+        },
+        "gap": { "expected": "8px", "actual": "6px", "match": false },
+        "label.fontSize": {
+          "expected": "14px",
+          "actual": "14px",
+          "match": true
+        }
+      },
+      "files": ["validation-report.md", "formfield-prototype-reference.png"]
+    },
+    {
+      "name": "FileUpload",
+      "category": "forms",
+      "visualMatch": 90,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "dragOverBorderColor",
+          "expected": "lean-blue",
+          "actual": "lean-blue-600",
+          "diff": "Good UX pattern",
+          "severity": "cosmetic"
+        }
+      ],
+      "measurements": {
+        "border": {
+          "expected": "2px dashed",
+          "actual": "2px dashed",
+          "match": true
+        },
+        "borderRadius": {
+          "expected": "8px",
+          "actual": "8px (rounded-lg)",
+          "match": true
+        },
+        "padding": { "expected": "p-8", "actual": "p-8", "match": true }
+      },
+      "files": ["FileUpload-validation-report.md"]
+    },
+    {
+      "name": "FilePreview",
+      "category": "forms",
+      "visualMatch": 95,
+      "status": "pass",
+      "issues": [],
+      "measurements": {
+        "modalStructure": {
+          "expected": "Dialog",
+          "actual": "Dialog component",
+          "match": true
+        },
+        "iconSize": {
+          "expected": "hierarchical",
+          "actual": "h-[18px], h-[20px], h-[120px]",
+          "match": true
+        },
+        "padding": {
+          "expected": "px-6 py-3, px-6 py-4",
+          "actual": "px-6 py-3, px-6 py-4",
+          "match": true
+        }
+      },
+      "files": ["FilePreview-validation-report.md"]
+    },
+    {
+      "name": "MultiFileUpload",
+      "category": "forms",
+      "visualMatch": 88,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "statisticsCard",
+          "expected": "Card component",
+          "actual": "Card with custom padding",
+          "diff": "Proper composition",
+          "severity": "cosmetic"
+        }
+      ],
+      "measurements": {
+        "draggerBorder": {
+          "expected": "2px dashed rounded-lg",
+          "actual": "2px dashed rounded-lg",
+          "match": true
+        },
+        "fileItemPadding": {
+          "expected": "p-3",
+          "actual": "p-3",
+          "match": true
+        },
+        "progressHeight": {
+          "expected": "h-[4px]",
+          "actual": "h-[4px]",
+          "match": true
+        }
+      },
+      "files": ["MultiFileUpload-validation-report.md"]
+    },
+    {
+      "name": "ConfigurationForm",
+      "category": "forms",
+      "visualMatch": 92,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "borderRadius",
+          "expected": "8px",
+          "actual": "12px (rounded-[12px])",
+          "diff": "+4px",
+          "severity": "cosmetic"
+        }
+      ],
+      "measurements": {
+        "formContainer": {
+          "expected": "rounded-lg",
+          "actual": "rounded-[12px]",
+          "match": false
+        },
+        "labelSpacing": {
+          "expected": "mb-2",
+          "actual": "mb-2 block text-sm",
+          "match": true
+        },
+        "fieldSpacing": { "expected": "mb-6", "actual": "mb-6", "match": true }
+      },
+      "files": ["validation-report.md"]
+    },
+    {
+      "name": "LoginForm",
+      "category": "forms",
+      "visualMatch": 96,
+      "status": "pass",
+      "issues": [],
+      "measurements": {
+        "inputHeight": {
+          "expected": "41px",
+          "actual": "h-[41px]",
+          "match": true
+        },
+        "iconPosition": {
+          "expected": "left-3",
+          "actual": "left-3 top-1/2",
+          "match": true
+        },
+        "iconPadding": {
+          "expected": "pl-[40px]",
+          "actual": "pl-[40px]",
+          "match": true
+        },
+        "buttonHeight": {
+          "expected": "h-[41px]",
+          "actual": "h-[41px] w-full",
+          "match": true
+        }
+      },
+      "files": ["validation-report.md"]
+    },
+    {
+      "name": "DataTable",
+      "category": "tables",
+      "visualMatch": 90,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "stripedVariant",
+          "expected": "bg-gray-50",
+          "actual": "index % 2 === 1 && 'bg-gray-50'",
+          "diff": "Standard pattern",
+          "severity": "cosmetic"
+        }
+      ],
+      "measurements": {
+        "tableBorder": {
+          "expected": "rounded-lg border",
+          "actual": "rounded-lg border",
+          "match": true
+        },
+        "searchWidth": {
+          "expected": "w-[300px]",
+          "actual": "w-[300px]",
+          "match": true
+        },
+        "paginationText": {
+          "expected": "text-sm",
+          "actual": "text-sm",
+          "match": true
+        }
+      },
+      "files": ["validation-report.md"]
+    },
+    {
+      "name": "DataTableMobile",
+      "category": "tables",
+      "visualMatch": 93,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "cardVariant",
+          "expected": "Card-based",
+          "actual": "variant system with spacing",
+          "diff": "Mobile-appropriate",
+          "severity": "cosmetic"
+        }
+      ],
+      "measurements": {
+        "cardSpacing": { "expected": "mb-3", "actual": "mb-3", "match": true },
+        "cardPadding": { "expected": "p-3", "actual": "p-3", "match": true },
+        "titleStyle": {
+          "expected": "text-base font-semibold",
+          "actual": "text-base font-semibold",
+          "match": true
+        }
+      },
+      "files": ["validation-report.md"]
+    },
+    {
+      "name": "VirtualTable",
+      "category": "tables",
+      "visualMatch": 91,
+      "status": "pass_with_minor_issues",
+      "issues": [
+        {
+          "property": "inlineStyles",
+          "expected": "CSS-in-JS",
+          "actual": "<style> tag for scrollbar",
+          "diff": "Technical necessity",
+          "severity": "acceptable"
+        }
+      ],
+      "measurements": {
+        "headerBackground": {
+          "expected": "bg-gray-50",
+          "actual": "bg-gray-50 rounded-t-lg",
+          "match": true
+        },
+        "rowPadding": {
+          "expected": "px-4 py-3",
+          "actual": "px-4 py-3",
+          "match": true
+        },
+        "scrollbarWidth": { "expected": "8px", "actual": "8px", "match": true }
+      },
+      "files": ["validation-report.md"]
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "pass": 4,
+    "passWithMinorIssues": 9,
+    "needsRefinement": 0,
+    "fail": 0,
+    "passRate": 100,
+    "avgVisualMatch": 92
+  },
+  "learnings": [
+    {
+      "problem": "Border radius inconsistency on 2 components (Card, ConfigurationForm)",
+      "rootCause": "Using rounded-xl (12px) instead of rounded-lg (8px) to match prototype",
+      "solution": "Standardize on rounded-lg (8px) across all card-like components",
+      "promptAddition": "RULE: Use rounded-lg (8px) for card/form containers, NOT rounded-xl (12px)"
+    },
+    {
+      "problem": "Padding mismatch on Button component",
+      "rootCause": "Using px-4 (16px) instead of exact prototype value (24px)",
+      "solution": "Use arbitrary values px-[24px] for exact measurements",
+      "promptAddition": "STEP: Extract exact padding values using getComputedStyle() before coding. Use arbitrary values like px-[24px] for non-standard spacing."
+    },
+    {
+      "problem": "Gap/spacing off by 2px on 2 components (FormField, Button)",
+      "rootCause": "Using rounded Tailwind values instead of exact measurements",
+      "solution": "Always use arbitrary values for exact prototype matching",
+      "promptAddition": "RULE: For gaps/spacing, verify exact px values from prototype. Use gap-[Npx] for precision, not gap-2 or gap-3."
+    }
+  ]
+}
