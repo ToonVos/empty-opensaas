@@ -434,7 +434,7 @@ vim app/main.wasp
 
 ---
 
-## Architecture-Specific Pitfalls (LEAN AI COACH)
+## Architecture-Specific Pitfalls (OpenSaaS Boilerplate)
 
 ### Assuming Sidebar Navigation
 

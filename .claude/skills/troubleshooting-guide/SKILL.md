@@ -222,7 +222,7 @@ npm install
 
 ```bash
 pwd
-# Should show: /path/to/lean-ai-coach-tl/app
+# Should show: /path/to/opensaas-techlead/app
 
 # If not:
 cd app
@@ -1012,7 +1012,7 @@ Before opening an issue, try these fixes:
 
 ## References
 
-**Complete guide:** `/Users/toonvos/Projects/LEANAICOACH/lean-ai-coach-tl/docs/TROUBLESHOOTING-GUIDE.md`
+**Complete guide:** `/Users/toonvos/Projects/OpenSAAS/opensaas-techlead/docs/TROUBLESHOOTING-GUIDE.md`
 
 **Related documentation:**
 

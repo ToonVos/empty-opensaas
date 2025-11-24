@@ -86,7 +86,7 @@ wasp start
 
 ```bash
 pwd
-# Should show: /path/to/lean-ai-coach-tl/app
+# Should show: /path/to/opensaas-techlead/app
 
 # If not:
 cd app

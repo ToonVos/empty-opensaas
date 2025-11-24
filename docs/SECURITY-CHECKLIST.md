@@ -1,6 +1,6 @@
 # Security Checklist
 
-**Comprehensive pre-commit and pre-deploy security verification checklist for LEAN AI COACH**
+**Comprehensive pre-commit and pre-deploy security verification checklist for OpenSaaS Boilerplate**
 
 > **Mandatory:** Run this checklist before EVERY commit to `main`/`develop` and BEFORE every production deployment.
 

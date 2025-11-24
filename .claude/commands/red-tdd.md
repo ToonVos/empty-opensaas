@@ -379,7 +379,7 @@ cd tasks/sprints/sprint-3/day-02/
 
 ```
 ❌ Not in sprintdag directory
-   Current: /Users/user/Projects/lean-ai-coach-Dev3/
+   Current: /Users/user/Projects/opensaas-dev3/
    Expected: tasks/sprints/sprint-X/day-Y/
 
    Options:

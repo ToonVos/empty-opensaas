@@ -1,6 +1,6 @@
 # Demo User Seed Strategy
 
-**Quick Start:** `./scripts/seed-visual-test.sh` → Instant demo user with sample data
+**Quick Start:** `./scripts/seed-demo-user.sh` → Instant demo user with sample data
 
 ---
 
@@ -23,7 +23,7 @@ Dit kost **15-20 minuten per test cycle**. Bij visual testing of na elke `wasp d
 **One-command demo user seeding with sample data.**
 
 ```bash
-./scripts/seed-visual-test.sh
+./scripts/seed-demo-user.sh
 ```
 
 Na 10 seconden heb je:
@@ -198,7 +198,7 @@ Dit maakt `wasp db seed seedDemoUser` command beschikbaar.
 
 ```bash
 # From project root
-./scripts/seed-visual-test.sh
+./scripts/seed-demo-user.sh
 ```
 
 **Output:**
@@ -301,7 +301,7 @@ URL:      http://localhost:3000/login
 
 ```bash
 wasp start db  # In separate terminal
-./scripts/seed-visual-test.sh  # In main terminal
+./scripts/seed-demo-user.sh  # In main terminal
 ```
 
 ---
@@ -318,7 +318,7 @@ wasp start db
 wasp db reset
 
 # 3. Seed demo user
-./scripts/seed-visual-test.sh
+./scripts/seed-demo-user.sh
 
 # 4. Start dev servers
 ./scripts/safe-start.sh
@@ -337,7 +337,7 @@ open http://localhost:3000/login
 open http://localhost:3000/app  # Navigate to your feature
 
 # Reset if needed
-wasp db reset && ./scripts/seed-visual-test.sh
+wasp db reset && ./scripts/seed-demo-user.sh
 ```
 
 ---

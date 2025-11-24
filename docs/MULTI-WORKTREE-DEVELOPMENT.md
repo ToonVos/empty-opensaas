@@ -40,12 +40,12 @@
 **Our Setup (5 Worktrees):**
 
 ```
-/Users/you/Projects/LEANAICOACH/
-├── lean-ai-coach/        # develop → Ports 3000/3001, DB 5432, Studio 5555
-├── lean-ai-coach-Dev1/   # Dev1    → Ports 3100/3101, DB 5433, Studio 5556
-├── lean-ai-coach-Dev2/   # Dev2    → Ports 3200/3201, DB 5434, Studio 5557
-├── lean-ai-coach-Dev3/   # Dev3    → Ports 3300/3301, DB 5435, Studio 5558
-└── lean-ai-coach-tl/     # TechLead→ Ports 3400/3401, DB 5436, Studio 5559
+/Users/you/Projects/OpenSAAS/
+├── opensaas-main/        # develop → Ports 3000/3001, DB 5432, Studio 5555
+├── opensaas-dev1/   # Dev1    → Ports 3100/3101, DB 5433, Studio 5556
+├── opensaas-dev2/   # Dev2    → Ports 3200/3201, DB 5434, Studio 5557
+├── opensaas-dev3/   # Dev3    → Ports 3300/3301, DB 5435, Studio 5558
+└── opensaas-techlead/     # TechLead→ Ports 3400/3401, DB 5436, Studio 5559
 ```
 
 **Each worktree has:**
@@ -62,14 +62,14 @@
 
 **Automatic Port Assignment:**
 
-| Worktree                        | Frontend | Backend | Database | Studio | Container Name    |
-| ------------------------------- | -------- | ------- | -------- | ------ | ----------------- |
-| **develop** (lean-ai-coach)     | 3000     | 3001    | 5432     | 5555   | wasp-dev-db-main  |
-| **Dev1** (lean-ai-coach-Dev1)   | 3100     | 3101    | 5433     | 5556   | wasp-dev-db-dev1  |
-| **Dev2** (lean-ai-coach-Dev2)   | 3200     | 3201    | 5434     | 5557   | wasp-dev-db-dev2  |
-| **Dev3** (lean-ai-coach-Dev3)   | 3300     | 3301    | 5435     | 5558   | wasp-dev-db-dev3  |
-| **TechLead** (lean-ai-coach-tl) | 3400     | 3401    | 5436     | 5559   | wasp-dev-db-tl    |
-| **AnGr1** (lean-ai-coach-AnGr1) | 3500     | 3501    | 5437     | 5560   | wasp-dev-db-angr1 |
+| Worktree                         | Frontend | Backend | Database | Studio | Container Name    |
+| -------------------------------- | -------- | ------- | -------- | ------ | ----------------- |
+| **develop** (opensaas-main)      | 3000     | 3001    | 5432     | 5555   | wasp-dev-db-main  |
+| **Dev1** (opensaas-dev1)         | 3100     | 3101    | 5433     | 5556   | wasp-dev-db-dev1  |
+| **Dev2** (opensaas-dev2)         | 3200     | 3201    | 5434     | 5557   | wasp-dev-db-dev2  |
+| **Dev3** (opensaas-dev3)         | 3300     | 3301    | 5435     | 5558   | wasp-dev-db-dev3  |
+| **TechLead** (opensaas-techlead) | 3400     | 3401    | 5436     | 5559   | wasp-dev-db-tl    |
+| **AnGr1** (opensaas-angr1)       | 3500     | 3501    | 5437     | 5560   | wasp-dev-db-angr1 |
 
 **How it works:**
 
@@ -91,7 +91,7 @@
 
 ```bash
 # 1. Navigate to your worktree
-cd /Users/you/Projects/LEANAICOACH/lean-ai-coach-Dev1
+cd /Users/you/Projects/OpenSAAS/opensaas-dev1
 
 # 2. Start servers (auto-detects Dev1, uses ports 3100/3101)
 ./scripts/safe-start.sh
@@ -113,7 +113,7 @@ cd /Users/you/Projects/LEANAICOACH/lean-ai-coach-Dev1
 
 ```bash
 # Dev2 wants to work
-cd /Users/you/Projects/LEANAICOACH/lean-ai-coach-Dev2
+cd /Users/you/Projects/OpenSAAS/opensaas-dev2
 ./scripts/safe-start.sh
 
 # Output:
@@ -202,19 +202,19 @@ cd /Users/you/Projects/LEANAICOACH/lean-ai-coach-Dev2
 
 **View all 5 databases side-by-side in browser tabs!**
 
-### 4. `multi-start.sh` - Parallel Launcher (Power Users)
+### 4. `seed-demo-user.sh` - Parallel Launcher (Power Users)
 
 **Start multiple worktrees simultaneously:**
 
 ```bash
 # Start all 5 worktrees in separate terminal tabs
-./scripts/multi-start.sh
+./scripts/seed-demo-user.sh
 
 # Start all + all Prisma Studios
-./scripts/multi-start.sh --with-studio
+./scripts/seed-demo-user.sh --with-studio
 
 # Start only specific worktrees
-./scripts/multi-start.sh dev1 dev2 tl
+./scripts/seed-demo-user.sh dev1 dev2 tl
 ```
 
 **Uses iTerm/Terminal automation** to open tabs.
@@ -228,7 +228,7 @@ cd /Users/you/Projects/LEANAICOACH/lean-ai-coach-Dev2
 **Morning:**
 
 ```bash
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev1
+cd ~/Projects/OpenSAAS/opensaas-dev1
 ./scripts/safe-start.sh
 # Work on feature A (frontend 3100, DB dev1)
 ```
@@ -236,7 +236,7 @@ cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev1
 **Switch features:**
 
 ```bash
-cd ~/Projects/LEANAICOACH/lean-ai-coach-Dev2
+cd ~/Projects/OpenSAAS/opensaas-dev2
 ./scripts/safe-start.sh
 # Work on feature B (frontend 3200, DB dev2)
 # Feature A STILL AVAILABLE on 3100!
@@ -256,7 +256,7 @@ Side-by-side comparison!
 **Developer 1 (morning):**
 
 ```bash
-cd lean-ai-coach-Dev1
+cd opensaas-dev1
 ./scripts/safe-start.sh
 # Servers: 3100/3101, Database: dev1
 # Working on overview page
@@ -265,7 +265,7 @@ cd lean-ai-coach-Dev1
 **Developer 2 (same time!):**
 
 ```bash
-cd lean-ai-coach-Dev2
+cd opensaas-dev2
 ./scripts/safe-start.sh
 # Servers: 3200/3201, Database: dev2
 # Working on detail page
@@ -276,7 +276,7 @@ cd lean-ai-coach-Dev2
 **Integration testing:**
 
 ```bash
-cd lean-ai-coach  # develop worktree
+cd opensaas-main  # develop worktree
 git pull origin develop  # Get merged features
 ./scripts/safe-start.sh  # Test combined on 3000
 ```
@@ -286,17 +286,17 @@ git pull origin develop  # Get merged features
 **Dev1: Testing with production-like data:**
 
 ```bash
-cd lean-ai-coach-Dev1
+cd opensaas-dev1
 ./scripts/safe-start.sh
 # Seed realistic data for screenshot
-./scripts/seed-visual-test.sh
+./scripts/seed-demo-user.sh
 # Database dev1 has demo data
 ```
 
 **Dev2: Testing with edge cases (same time!):**
 
 ```bash
-cd lean-ai-coach-Dev2
+cd opensaas-dev2
 ./scripts/safe-start.sh
 # Create edge case data manually
 # Database dev2 has edge cases
@@ -313,14 +313,14 @@ cd lean-ai-coach-Dev2
 **Step 1: Create worktree**
 
 ```bash
-cd ~/Projects/LEANAICOACH/lean-ai-coach  # Main worktree
-git worktree add ../lean-ai-coach-Dev1 -b feature/sprint-2-overview
+cd ~/Projects/OpenSAAS/opensaas-main  # Main worktree
+git worktree add ../opensaas-dev1 -b feature/sprint-2-overview
 ```
 
 **Step 2: Navigate and start**
 
 ```bash
-cd ../lean-ai-coach-Dev1
+cd ../opensaas-dev1
 ./scripts/safe-start.sh
 # Auto-detects Dev1 → Uses ports 3100/3101, database 5433
 ```
@@ -331,9 +331,9 @@ cd ../lean-ai-coach-Dev1
 
 ```bash
 git worktree list
-# /path/to/lean-ai-coach       52cff37 [feature/TL-techlead]
-# /path/to/lean-ai-coach-Dev1   579589a [feature/sprint-2-overview]
-# /path/to/lean-ai-coach-Dev2   313c736 [feature/sprint-2-detail]
+# /path/to/opensaas-main       52cff37 [feature/TL-techlead]
+# /path/to/opensaas-dev1   579589a [feature/sprint-2-overview]
+# /path/to/opensaas-dev2   313c736 [feature/sprint-2-detail]
 ```
 
 ### Removing Worktree
@@ -341,8 +341,8 @@ git worktree list
 **After feature merged:**
 
 ```bash
-cd ~/Projects/LEANAICOACH/lean-ai-coach  # Navigate OUT of worktree first
-git worktree remove ../lean-ai-coach-Dev1
+cd ~/Projects/OpenSAAS/opensaas-main  # Navigate OUT of worktree first
+git worktree remove ../opensaas-dev1
 git branch -d feature/sprint-2-overview
 
 # Optional: Clean up database container
@@ -371,7 +371,7 @@ docker rm -f wasp-dev-db-dev1
 ./scripts/db-manager.sh start
 
 # Or specify worktree
-./scripts/db-manager.sh start lean-ai-coach-Dev2
+./scripts/db-manager.sh start opensaas-dev2
 ```
 
 **Creates Docker PostgreSQL container** if doesn't exist.
@@ -416,7 +416,7 @@ wasp db migrate-dev      # Apply to Dev2's database
 ### Test in Isolation
 
 ```bash
-cd lean-ai-coach-Dev1
+cd opensaas-dev1
 ./scripts/safe-start.sh
 # Test at http://localhost:3100
 # Database: dev1 (isolated test data)
@@ -425,7 +425,7 @@ cd lean-ai-coach-Dev1
 ### Test Integration
 
 ```bash
-cd lean-ai-coach  # develop worktree
+cd opensaas-main  # develop worktree
 git pull origin develop  # All merged features
 ./scripts/safe-start.sh
 # Test at http://localhost:3000
@@ -436,12 +436,12 @@ git pull origin develop  # All merged features
 
 ```bash
 # Keep develop running:
-cd lean-ai-coach
+cd opensaas-main
 ./scripts/safe-start.sh
 # → http://localhost:3000 (current state)
 
 # Start feature in parallel:
-cd lean-ai-coach-Dev1
+cd opensaas-dev1
 ./scripts/safe-start.sh
 # → http://localhost:3100 (new feature)
 
@@ -564,7 +564,7 @@ kill -9 $(lsof -ti:3100)
 ✅ **Use multiple Studios** - `./scripts/db-studio.sh --all`
 ✅ **Reset database** - `./scripts/db-manager.sh clean` for fresh start
 ✅ **Pull + migrate** - After pulling schema changes
-✅ **Name worktrees correctly** - lean-ai-coach-Dev1, lean-ai-coach-Dev2
+✅ **Name worktrees correctly** - opensaas-dev1, opensaas-dev2
 
 ### DON'T:
 
@@ -584,14 +584,14 @@ kill -9 $(lsof -ti:3100)
 
 ```bash
 # Scripts detect: basename $(git rev-parse --show-toplevel)
-# Example: "lean-ai-coach-Dev1"
+# Example: "opensaas-dev1"
 ```
 
 **2. Lookup in `worktree-config.sh`:**
 
 ```bash
-case "lean-ai-coach-Dev1" in
-  "lean-ai-coach-Dev1")
+case "opensaas-dev1" in
+  "opensaas-dev1")
     export FRONTEND_PORT=3100
     export BACKEND_PORT=3101
     export DB_PORT=5433
@@ -651,7 +651,7 @@ docker run -d \
 ./scripts/db-studio.sh --all
 
 # Start all worktrees parallel (power users)
-./scripts/multi-start.sh --with-studio
+./scripts/seed-demo-user.sh --with-studio
 ```
 
 ### Port Reference
@@ -721,7 +721,7 @@ alias studio='./scripts/db-studio.sh'
 
 ```bash
 # Morning: Start all worktrees at once
-./scripts/multi-start.sh --with-studio
+./scripts/seed-demo-user.sh --with-studio
 
 # Opens 5 terminal tabs + 5 Studios
 # Access any worktree instantly via tab switching

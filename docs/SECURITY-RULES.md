@@ -123,8 +123,8 @@ app leanAiCoach {
       usernameAndPassword: {},  // Wasp handles password hashing automatically
       email: {                  // Or use email auth
         fromField: {
-          name: "LEAN AI COACH",
-          email: "noreply@leancoach.nl"
+          name: "OpenSaaS Boilerplate",
+          email: "noreply@example.com"
         },
         emailVerification: {
           clientRoute: EmailVerificationRoute,
@@ -165,14 +165,14 @@ export const seedDemoUser = async (prismaClient) => {
 
   await prismaClient.user.create({
     data: {
-      email: "demo@leancoach.nl",
-      username: "demo@leancoach.nl",
+      email: "demo@example.com",
+      username: "demo@example.com",
       auth: {
         create: {
           identities: {
             create: {
               providerName: "email",
-              providerUserId: "demo@leancoach.nl",
+              providerUserId: "demo@example.com",
               providerData,
             },
           },

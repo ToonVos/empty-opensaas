@@ -827,7 +827,7 @@ try {
 
 ## References
 
-**Complete examples:** `/Users/toonvos/Projects/LEANAICOACH/lean-ai-coach-tl/.claude/templates/error-handling-patterns.ts`
+**Complete examples:** `/Users/toonvos/Projects/OpenSAAS/opensaas-techlead/.claude/templates/error-handling-patterns.ts`
 
 **Line references in error-handling-patterns.ts:**
 

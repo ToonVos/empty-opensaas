@@ -1,6 +1,6 @@
 # Online Documentation Directory
 
-This document serves as a directory to the online documentation resources for the LEAN AI COACH project.
+This document serves as a directory to the online documentation resources for the OpenSaaS Boilerplate project.
 
 ## Primary Documentation Sources
 

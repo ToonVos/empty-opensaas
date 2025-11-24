@@ -104,4 +104,4 @@ This MCP setup integrates seamlessly with our existing Playwright E2E test setup
 ---
 
 **Last Updated**: 2025-10-17
-**Maintained By**: LEAN AI COACH Development Team
+**Maintained By**: OpenSaaS Boilerplate Development Team
